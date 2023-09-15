@@ -17,6 +17,7 @@ const config = {
     // locales: ["en"],
     // defaultLocale: "en",
   // },
+  //added auth
 };
 
 export default config;
