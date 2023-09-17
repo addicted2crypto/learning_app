@@ -18,17 +18,16 @@ generator client {
 
 
 
-
-
-
-model Example {
-    id        Int      @id @default(autoincrement())
+model Post {
+    id        String     @id @default(cuid())
     name      String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+    content   String   @db.VarChar()
 
     @@index([name])
 }
+
 
 // Necessary for Next auth
 model Account {
