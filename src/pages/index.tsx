@@ -1,7 +1,9 @@
+import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
 import Head from "next/head";
 import Link from "next/link";
 
 export default function Home() {
+  const user = useUser;
   return (
     <>
       <Head>
@@ -17,31 +19,43 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-20">
             <Link
               className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
-              href="https://create.t3.gg/en/usage/first-steps"
+              href="/login"
               target="_blank"
             >
-              <h3 className="text-2xl font-bold">Log in</h3>
-              <div className="text-lg">
-                Learning together and sharing paths that worked for to uplift us all. Security is key. 
-                Upvote and upload content that has helped you along the way. Share the hard learned horror stories.
-                Get rewarded for sharing with your peers.
-    
-              </div>
+              <h3 className="text-2xl text-[#3a3d3a] font-bold">Log in for the alpha</h3>
+               <div className="text-lg">
+              Learning together and sharing paths that worked for to uplift us all. Security is key. 
+              Upvote and upload content that has helped you along the way. Share the hard learned horror stories.
+              Get rewarded for sharing with your peers.
+
+               </div>
             </Link>
             <Link
               className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
               href="/"
               target="_blank"
             >
-              <h3 className="text-2xl font-bold">Examples of content</h3>
+              <h3 className="text-2xl  text-[#3a3d3a] font-bold">Examples of content</h3>
               <div className="text-lg">
-                We can help each other by sharing our stories. Upvoting the content we believe matter the most. 
-                The top 5 links will be publicly shared on twitter daily.
+              Together, we empower one another through story-sharing and content upvoting. 
+              Each day, the top 5 links, as determined by our community, will be spotlighted on our Twitter account 
+              for wider exposure."
+                
                 
               </div>
+     
+     
             </Link>
           </div>
         </div>
+          <div className="rounded-xl bg-slate-500 hover: bg-white/60">
+            
+    
+  
+              {!user && <SignInButton />}
+              {!!user && <SignOutButton />}
+          </div>
+               
       </main>
     </>
   );
