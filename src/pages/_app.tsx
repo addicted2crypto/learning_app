@@ -10,6 +10,7 @@ const MyApp: AppType<{ session: Session }> = ({
 }) => {
   return (
     <ClerkProvider {...pageProps}>
+      {/* clerk history */}
       <Component {...pageProps} />
     </ClerkProvider>
   );
